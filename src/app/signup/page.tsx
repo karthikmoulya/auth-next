@@ -22,8 +22,8 @@ export default function SignupPage() {
       console.log('signup success', response.data);
       router.push('/login'); // Redirection
     } catch (error: any) {
-      console.log('Signup failed', error.message);
-      toast.error(error.message);
+      console.log('Signup failed', error.response.data.error);
+      toast.error(error.response.data.error);
     } finally {
       setLoading(false);
     }

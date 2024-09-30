@@ -4,9 +4,8 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const path = request.nextUrl.pathname;
 
-  const isPublicPath = path === '/login' || path === '/signup';
-
-  console.log(path, isPublicPath);
+  const isPublicPath =
+    path === '/login' || path === '/signup' || path === '/verifyemail';
 
   const token = request.cookies.get('token')?.value || '';
 
@@ -20,5 +19,12 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/', '/profile', '/profile/:path*', '/login', '/signup'],
+  matcher: [
+    '/',
+    '/profile',
+    '/profile/:path*',
+    '/login',
+    '/signup',
+    '/verifyemail',
+  ],
 };
